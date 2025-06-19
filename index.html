@@ -3,90 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zardasht Ali</title>
+    <title>Zardasht Ali - Software Engineering Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #10b981;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 5rem 0;
+            gap: 3rem;
+        }
+
+        .profile-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-content {
+            flex: 1.5;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
         }
 
         section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 5rem 0;
         }
 
-
-        h2, h3 { 
-           color: #333;
-
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-
-        h1 {
-            color: #ffff
-            ;
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
         }
 
-        .project {
-            margin-bottom: 20px;
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p, .contact-details a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-img {
+            height: 180px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            gap: 12px;
         }
 
         footer {
-            background-color: #333;
-            color: #fff;
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
             text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 0;
+            }
+            
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn, .btn-outline {
+                margin: 0;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-    <a href="Test.png" download="Profile">
-    <img src="Test.png" alt="Zardasht Ali" width="1100" height="1500">
-    </a>
-    <h1>Zardasht Ali Muhammad</h1>
-    <p>Student</p>
-</header>
-    
-    <section>
-        <h2>About Me</h2>
-        <p>student at Qaiwan International University/The department of Software engineering</p>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    Zardasht<span>.</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Zardasht Ali Muhammad</h1>
+                <h2>Software Engineering Student</h2>
+                <p>Passionate about technology and software development. Currently pursuing my degree at Qaiwan International University and eager to apply my skills to real-world challenges.</p>
+                <div class="btn-container">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="profile-img">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Zardasht Ali">
+            </div>
+        </div>
     </section>
 
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Software Engineering Student</h3>
+                    <p>I am a dedicated software engineering student at Qaiwan International University, passionate about developing innovative solutions and exploring the latest technologies in the field.</p>
+                    <p>My academic journey has equipped me with a strong foundation in software development principles, problem-solving techniques, and project management skills. I'm constantly seeking opportunities to expand my knowledge and apply my skills to real-world challenges.</p>
+                    <p>With a focus on continuous learning and improvement, I aim to contribute meaningfully to the tech industry and create solutions that make a positive impact.</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:zaqiu230442@uniq.edu.iq">zaqiu230442@uniq.edu.iq</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+964 776 951 1649</p>
+                            <p>+964 750 395 0892</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Education</h4>
+                            <p>Qaiwan International University</p>
+                            <p>Software Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section>
-        <h2>Contact</h2>
-        <p>Email: zaqiu230442@uniq.edu.iq</p>
-        <p>Phone number: +964 776 951 1649/ +964 750 395 0892</p>
-       </section> 
-      
-<section>
-    <h2>Projects</h2>
-    <p>Career development PDF: <a href="https://drive.google.com/file/d/1Nx_OxPddOIKcsPAU7J0hhLgw_HkzKFWQ/view?usp=sharing" target="_blank" style="color: blue;">Download PDF</a></p>
-    <p>Korek Telecommunicaton company visit report PDF: <a href="https://drive.google.com/file/d/1A6dU8-WIznVsPgdiSuD4lCLa5wKIkXXF/view?usp=share_link" target="_blank" style="color: blue;">Download PDF</a></p>
-    <p>Design thinking report: <a href="https://drive.google.com/file/d/14FHrbr55E3hayo6rDosPdquQPJZHkb5W/view?usp=share_link" target="_blank" style="color: blue;">Download PDF</a></p>
-    <p>Career development newspaper:  <a href="https://drive.google.com/file/d/1XYsEcuHoJ76CbwKydMdlYHFdjw8SIuYk/view?usp=share_link" target="_blank" style="color: blue;">Download PDF</a></p>
-</section>
+    <section id="projects" style="background-color: #f0f9ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Career Development PDF</h3>
+                        <p>A comprehensive guide to career development strategies and professional growth in the tech industry.</p>
+                        <a href="https://drive.google.com/file/d/1Nx_OxPddOIKcsPAU7J0hhLgw_HkzKFWQ/view?usp=sharing" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-tower-cell"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Korek Telecom Report</h3>
+                        <p>Detailed report on the visit to Korek Telecommunication company, including technical insights.</p>
+                        <a href="https://drive.google.com/file/d/1A6dU8-WIznVsPgdiSuD4lCLa5wKIkXXF/view?usp=share_link" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Design Thinking Report</h3>
+                        <p>An innovative approach to problem-solving using design thinking methodologies.</p>
+                        <a href="https://drive.google.com/file/d/14FHrbr55E3hayo6rDosPdquQPJZHkb5W/view?usp=share_link" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Career Development Newspaper</h3>
+                        <p>A publication focusing on career opportunities and professional development in software engineering.</p>
+                        <a href="https://drive.google.com/file/d/1XYsEcuHoJ76CbwKydMdlYHFdjw8SIuYk/view?usp=share_link" target="_blank" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2024 Your Portfolio
+        <div class="container">
+            <div class="footer-content">
+                <h3>Zardasht Ali Muhammad</h3>
+                <p>Software Engineering Student at Qaiwan International University</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p>&copy; 2024 Zardasht Ali Portfolio. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.hero-content, .about-content, .project-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
